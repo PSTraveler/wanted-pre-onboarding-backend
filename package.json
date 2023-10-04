@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "NODE_ENV=test node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +14,8 @@
     "jade": "^1.9.2",
     "morgan": "~1.9.1",
     "sequelize": "^6.33.0",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "supertest": "^6.3.3",
+    "uuidv1": "^1.6.14"
   }
 }

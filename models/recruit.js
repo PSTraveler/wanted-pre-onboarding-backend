@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Recruit = sequelize.define('채용공고', {
-        id: {
+        채용공고_id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
             allowNull: false,
@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     }, {
-        timestamps: false
+        timestamps: false,
+        tableName: '채용공고'
     });
     return Recruit;
 }

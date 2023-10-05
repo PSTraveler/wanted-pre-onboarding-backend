@@ -3,30 +3,24 @@ var models = require('../models');
 
 var router = express.Router();
 
-async function getJSON(element) {
-  const recruits = await element.getRecruits({ joinTableAttributes: ['사용자_id', '채용공고_id'] });
-  let result = Object.assign(JSON.parse(JSON.stringify(element)), JSON.parse(JSON.stringify(recruits)));
-  return result;
-}
-
 router.get('/', async function(req, res, next) {
   const users = await models.User.findAll();
-  // const result = await Promise.all(users.map(function(element) {
-  //   return getJSON(element);
-  // }));
   res.send(users);
 });
 
-/* GET users listing. */
+/* INSERT User Data*/
 router.get('/create', async function(req, res, next) {
-  const user = await models.User.create();
-  res.send(user);
+  try {
+    const user = await models.User.create();
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(400).send(err)
+  }
 });
 
 router.get('/:id', async function(req, res, next) {
-  const user = await models.User.findOne({ offset: (req.params.id - 1), attributes: ['사용자_id'] });
-  const recruits = await models.UserRecruits.findAll({ where: { 사용자_id: user.사용자_id } });
-  res.send(recruits);
+  const user = await models.User.findOne({ offset: (req.params.id - 1)});
+  res.send(user);
 })
 
 router.get('/:id/apply/:recruit', async function(req, res, next) {
@@ -37,8 +31,8 @@ router.get('/:id/apply/:recruit', async function(req, res, next) {
     return;
   }
   await recruit.addUsers(user);
-  const result = await user.addRecruits(recruit);
-  res.send(result);
+  const result = await models.UserRecruits.findOne({ where: { 사용자_id: user.사용자_id } });
+  res.status(200).send(result);
 });
 
 module.exports = router;

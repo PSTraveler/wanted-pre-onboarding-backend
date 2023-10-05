@@ -9,9 +9,17 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/insert', async function(req, res, next) {
-  const company = await models.Company.create(req.body);
-  console.log('Company: Insert Success');
-  res.send(company);
+  try {
+    const [company, created] = await models.Company.findOrCreate({ where: req.body });
+    if (created) {
+      res.status(200).send(company);
+    }
+    else {
+      throw 'Already Existed';
+    }
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 router.get('/:id', async function(req, res, next) {
@@ -20,10 +28,14 @@ router.get('/:id', async function(req, res, next) {
 });
 
 router.post('/:id/recruit/insert', async function(req, res, next) {
-  const company = await models.Company.findOne({ offset: (req.params.id - 1) });
-  const recruit = await models.Recruit.create(req.body);
-  await company.addRecruit(recruit);
-  res.send(recruit);
+  try {
+    const company = await models.Company.findOne({ offset: (req.params.id - 1) });
+    const recruit = await models.Recruit.create(req.body);
+    await company.addRecruit(recruit);
+    res.status(200).send(recruit);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 router.delete('/:id/delete', async function(req, res, next) {
@@ -38,10 +50,10 @@ router.delete('/:id/delete', async function(req, res, next) {
   });
   const deleted = await models.Company.destroy({ where: { 회사_id: company.회사_id } });
   if (deleted === 0) {
-    res.status(404).send('Fail');
+    res.status(400).send('Fail');
   }
   else {
-    res.send('DELETE Success');
+    res.status(200).send('DELETE Success');
   }
 });
 

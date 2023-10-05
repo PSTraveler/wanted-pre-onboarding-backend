@@ -13,25 +13,29 @@ async function getJSON(element) {
 }
 
 router.get('/', async function(req, res, next) {
-  if (req.query.search) {
-    console.log(req.query.search);
-    var recruit = await models.Recruit.findAll({ 
-      where: { 
-        [Op.or]: [
-          { 채용포지션: {[Op.substring]: req.query.search} },
-          { 채용내용: {[Op.substring]: req.query.search} },
-          { 사용기술: {[Op.substring]: req.query.search} }
-        ]
-      }
-    });
+  try {
+    if (req.query.search) {
+      console.log(req.query.search);
+      var recruit = await models.Recruit.findAll({ 
+        where: { 
+          [Op.or]: [
+            { 채용포지션: {[Op.substring]: req.query.search} },
+            { 채용내용: {[Op.substring]: req.query.search} },
+            { 사용기술: {[Op.substring]: req.query.search} }
+          ]
+        }
+      });
+    }
+    else {
+      var recruit = await models.Recruit.findAll();
+    }
+    const recruit_list = await Promise.all(recruit.map(function(element) {
+      return getJSON(element);
+    }));
+    res.status(200).send(recruit_list);
+  } catch (err) {
+    res.status(400).send(err);
   }
-  else {
-    var recruit = await models.Recruit.findAll();
-  }
-  const recruit_list = await Promise.all(recruit.map(function(element) {
-    return getJSON(element);
-  }));
-  res.send(recruit_list);
 });
 
 router.get('/:id', async function(req, res, next) {
@@ -57,7 +61,7 @@ router.patch('/:id/modify', async function(req, res, next) {
     res.status(404).send('Fail');
   }
   else {
-    res.send(await models.Recruit.findOne({ offset: (req.params.id - 1) }));
+    res.status(200).send(await models.Recruit.findByPk(req.params.id));
   }
 });
 
@@ -72,7 +76,7 @@ router.delete('/:id/delete', async function(req, res, next) {
     res.status(404).send('Fail');
   }
   else {
-    res.send("DELETE Success");
+    res.status(200).send("DELETE Success");
   }
 });
 

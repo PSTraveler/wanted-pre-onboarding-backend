@@ -58,7 +58,7 @@ router.patch('/:id/modify', async function(req, res, next) {
     { where: { 채용공고_id: key.채용공고_id} }
   );
   if (recruit[0] === 0) {
-    res.status(404).send('Fail');
+    res.status(400).send('Fail');
   }
   else {
     res.status(200).send(await models.Recruit.findByPk(req.params.id));
@@ -68,12 +68,12 @@ router.patch('/:id/modify', async function(req, res, next) {
 router.delete('/:id/delete', async function(req, res, next) {
   const recruit = await models.Recruit.findByPk(req.params.id, { attributes: ['채용공고_id'] });
   if (recruit === null) {
-    res.status(404).send('No Data Found');
+    res.status(400).send('No Data Found');
     return;
   }
   const deleted = await models.Recruit.destroy({ where: { 채용공고_id: recruit.채용공고_id } });
   if (deleted === 0) {
-    res.status(404).send('Fail');
+    res.status(400).send('Fail');
   }
   else {
     res.status(200).send("DELETE Success");

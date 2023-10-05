@@ -27,7 +27,7 @@ router.get('/:id/apply/:recruit', async function(req, res, next) {
   const user = await models.User.findOne({ offset: (req.params.id - 1) });
   const recruit = await models.Recruit.findByPk(req.params.recruit);
   if (await models.UserRecruits.findOne({ where: { 사용자_id: user.사용자_id, 채용공고_id: req.params.recruit } })) {
-    res.status(406).send('Already Applied');
+    res.status(400).send('Already Applied');
     return;
   }
   await recruit.addUsers(user);

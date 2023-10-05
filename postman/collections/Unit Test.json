@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "5679c018-ea9b-478e-853f-64d48d276ec2",
+		"name": "Unit Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "30204978-5679c018-ea9b-478e-853f-64d48d276ec2"
+	},
+	"item": [
+		{
+			"name": "Company_INSERT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7eb97cf-909a-4ef7-9db5-7cb64850fa79",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5263c0c9-f2be-4463-918e-a46c0404178e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"회사명\": \"ㅁㅁ회사\",\r\n    \"국가\": \"한국\",\r\n    \"지역\": \"서울\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_INSERT_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7eb97cf-909a-4ef7-9db5-7cb64850fa79",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "011afdcb-4364-447c-be98-433bd2038894",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"회사명\": \"ㅇㅇ회사\",\r\n    \"국가\": \"한국\",\r\n    \"지역\": \"서울\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_INSERT_FAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7eb97cf-909a-4ef7-9db5-7cb64850fa79",
+						"exec": [
+							"pm.test(\"Status code is 400: FAILED\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "ee826669-6004-4840-bec8-f94457106fae",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"회사명\": \"ㅇㅇ회사\",\r\n    \"국가\": \"한국\",\r\n    \"지역\": \"서울\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_Recruit_INSERT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30574387-56b9-492a-838d-ff6fe2a931e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "491c2c0e-0b32-4621-9b89-3e9191487ce9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"채용공고_id\": \"abd81894-ee3c-4d02-833d-6ad41af2e376\",\r\n    \"채용포지션\": \"백엔드\",\r\n    \"채용보상금\": \"150000\",\r\n    \"채용내용\": \"프로그래머 모집 1\",\r\n    \"사용기술\": \"Python\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/1/recruit/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"1",
+						"recruit",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_Recruit_INSERT_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab1bd1d4-e089-40cd-9bff-07ce949a4015",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "73473537-cca6-4324-8453-8778f6b2f1d2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"채용포지션\": \"프론트엔드\",\r\n    \"채용보상금\": \"200000\",\r\n    \"채용내용\": \"프로그래머 모집 2\",\r\n    \"사용기술\": \"Javascript\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/1/recruit/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"1",
+						"recruit",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_Recruit_INSERT_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30574387-56b9-492a-838d-ff6fe2a931e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "e0525fe0-f48b-4227-a7ff-634080860386",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"채용포지션\": \"백엔드\",\r\n    \"채용보상금\": \"300000\",\r\n    \"채용내용\": \"프로그래머 모집 3\",\r\n    \"사용기술\": \"Node.js\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/1/recruit/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"1",
+						"recruit",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_Recruit_INSERT_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab1bd1d4-e089-40cd-9bff-07ce949a4015",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5ccef453-cabc-453b-9645-25e08b7e417f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"채용포지션\": \"프론트엔드\",\r\n    \"채용보상금\": \"500000\",\r\n    \"채용내용\": \"프로그래머 모집 4\",\r\n    \"사용기술\": \"CSS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/company/2/recruit/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"2",
+						"recruit",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company_Recruit_UPDATE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab1bd1d4-e089-40cd-9bff-07ce949a4015",
+						"exec": [
+							"pm.test(\"JSON Check\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.채용보상금).to.eql(1000000);\r",
+							"    pm.expect(jsonData.사용기술).to.eql(\"C++\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "e6513c45-9222-4f5f-8647-3a83c3167ce5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"채용보상금\": \"1000000\",\r\n    \"사용기술\": \"C++\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/recruit/abd81894-ee3c-4d02-833d-6ad41af2e376/modify",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recruit",
+						"abd81894-ee3c-4d02-833d-6ad41af2e376",
+						"modify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recruit_SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe24a0cf-092c-49c1-aeea-2185ae092f16",
+						"exec": [
+							"pm.test(\"JSON Check\", function () {\r",
+							"    var jsonData = pm.response.json()[0];\r",
+							"    pm.expect(jsonData.채용공고_id).to.eql(\"abd81894-ee3c-4d02-833d-6ad41af2e376\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4e2721d2-67e7-424a-aed3-d7db8a1fc262",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/recruit/?search=C%2B%2B",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recruit",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "C%2B%2B"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User_INSERT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbb69b58-c070-4846-a27d-5f578f49f208",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "6946e02f-44bb-43ed-83be-052f98dd57f4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User_Recruit_Apply",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ab3f508-071a-4b72-ab6a-387fce55130f",
+						"exec": [
+							"pm.test(\"JSON Check\", async function () {\r",
+							"    const promise = () => new Promise((resolve, reject) => {\r",
+							"        var user_id;\r",
+							"        pm.sendRequest(\"http://localhost:3000/user/1\", async function (err, response) {\r",
+							"            user_id = await response.json().사용자_id;\r",
+							"        });\r",
+							"        resolve(user_id);\r",
+							"    });\r",
+							"    var jsonData = pm.response.json();\r",
+							"    promise().then((user_id) => {\r",
+							"        pm.expect(jsonData.사용자_id).to.eql(user_id);\r",
+							"        pm.expect(jsonData.채용공고_id).to.eql(\"abd81894-ee3c-4d02-833d-6ad41af2e376\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "55f24bcc-a4a7-486d-907c-671eb3999be1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/1/apply/abd81894-ee3c-4d02-833d-6ad41af2e376",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"1",
+						"apply",
+						"abd81894-ee3c-4d02-833d-6ad41af2e376"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recruit_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a89c0791-065e-474e-928d-658957272b8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "551def46-0ee2-4bb6-a9cd-f483a550d227",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/recruit/abd81894-ee3c-4d02-833d-6ad41af2e376/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recruit",
+						"abd81894-ee3c-4d02-833d-6ad41af2e376",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
